@@ -93,3 +93,8 @@ p {
     pointer-events: none;
     transition: transform 0.1s ease;
 }
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Duration and timing */
+}
