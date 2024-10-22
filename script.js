@@ -41,3 +41,15 @@ window.addEventListener('resize', () => {
     rainCanvas.width = window.innerWidth;
     rainCanvas.height = window.innerHeight;
 });
+document.getElementById('middleButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default action of the anchor
+    const targetUrl = this.href; // Get the URL to redirect to
+
+    // Add the fade-out class to the content
+    document.querySelector('.content').classList.add('fade-out');
+
+    // Wait for the transition to complete before redirecting
+    setTimeout(() => {
+        window.location.href = targetUrl; // Redirect
+    }, 500); // Match the CSS transition duration
+});
