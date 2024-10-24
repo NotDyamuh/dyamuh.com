@@ -31,10 +31,10 @@ canvas {
 }
 
 .box {
-    background: rgba(34, 34, 34, 0.9); /* Dark semi-transparent background */
-    width: 345px; /* Slightly increased width */
-    height: 325px; /* Slightly increased height */
-    padding: 30px; /* Increased padding for better spacing */
+    background: rgba(50, 50, 50, 0.9); /* Darker grey background */
+    width: 360px; /* Increased width for button images */
+    height: 340px; /* Increased height for button images */
+    padding: 20px; /* Padding */
     border-radius: 12px; /* Slightly more rounded corners */
     box-shadow: 0 0 30px rgba(255, 0, 0, 1); /* Bright red glow effect */
     text-align: center;
@@ -121,4 +121,17 @@ p {
 .fade-out {
     opacity: 0;
     transition: opacity 0.5s ease; /* Duration and timing */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0; /* Position it at the bottom */
+    left: 0;
+    width: 100%; /* Full width */
+    background: #444; /* Darker grey background */
+    color: white; /* Text color */
+    font-size: 0.8em; /* Smaller font size */
+    z-index: 10; /* Ensure it is above the canvas */
+    text-align: center; /* Center the text */
+    padding: 5px 0; /* Reduced padding for a smaller size */
 }
