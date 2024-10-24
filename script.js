@@ -4,6 +4,7 @@ const ctx = rainCanvas.getContext('2d');
 rainCanvas.width = window.innerWidth;
 rainCanvas.height = window.innerHeight;
 let raindrops = [];
+
 // Create raindrops
 for (let i = 0; i < 100; i++) {
     raindrops.push({
@@ -13,6 +14,7 @@ for (let i = 0; i < 100; i++) {
         speed: Math.random() * 2 + 1 // Slower speed
     });
 }
+
 function drawRain() {
     ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
@@ -30,17 +32,22 @@ function drawRain() {
         }
     }
 }
+
 // Draw rain at a slower interval
 setInterval(drawRain, 33); // About 30 frames per second
+
 // Custom cursor movement
 document.addEventListener('mousemove', (e) => {
     customCursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`; // Center the cursor
 });
+
 // Resize canvas on window resize
 window.addEventListener('resize', () => {
     rainCanvas.width = window.innerWidth;
     rainCanvas.height = window.innerHeight;
 });
+
+// Redirect with fade-out effect
 document.getElementById('middleButton').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default action of the anchor
     const targetUrl = this.href; // Get the URL to redirect to
