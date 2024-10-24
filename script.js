@@ -38,7 +38,7 @@ setInterval(drawRain, 33); // About 30 frames per second
 
 // Custom cursor movement
 document.addEventListener('mousemove', (e) => {
-    customCursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`; // Center the cursor
+    customCursor.style.transform = `translate(${e.clientX - 12.5}px, ${e.clientY - 12.5}px)`; // Center the cursor
 });
 
 // Resize canvas on window resize
