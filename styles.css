@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif; /* Use Montserrat for a more modern look */
+    font-family: 'Montserrat', sans-serif;
     overflow: hidden;
     color: white;
 }
@@ -17,8 +17,8 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Allow clicks to pass through */
-    background: black; /* Ensure canvas has a black background */
+    pointer-events: none;
+    background: black;
 }
 
 .content {
@@ -27,100 +27,79 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 10; /* Ensure content is above the background */
+    z-index: 10;
 }
 
 .box {
-    background: rgba(50, 50, 50, 0.9); /* Darker grey background */
-    width: 360px; /* Increased width for button images */
-    height: 340px; /* Increased height for button images */
-    padding: 20px; /* Padding */
-    border-radius: 12px; /* Slightly more rounded corners */
-    box-shadow: 0 0 30px rgba(255, 0, 0, 1); /* Bright red glow effect */
+    background: rgba(50, 50, 50, 0.9);
+    width: 360px;
+    height: 340px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     text-align: center;
-    overflow: hidden; /* Hide overflow if content is too large */
+    overflow: hidden;
 }
 
 .profile-pic {
-    margin-bottom: 15px; /* Space below the profile picture */
-    position: relative; /* Needed for glow */
+    margin-bottom: 15px;
+    position: relative;
 }
 
 .profile-pic img {
-    width: 100px; /* Increased size for profile picture */
-    height: 100px; /* Increased size for profile picture */
-    border-radius: 50%; /* Make it circular */
-    border: 5px solid rgba(255, 0, 0, 0.6); /* Red border */
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Red glow */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
 
 h1 {
-    font-size: 2em; /* Larger title */
-    margin: 15px 0; /* Space around title */
+    font-size: 2em;
+    margin: 15px 0;
 }
 
 p {
-    font-size: 1.1em; /* Slightly bigger font size */
-    margin-bottom: 15px; /* Add some space below the description */
+    font-size: 1.1em;
+    margin-bottom: 15px;
 }
 
 .links {
     display: flex;
     justify-content: center;
-    gap: 8px; /* Slightly larger gap between buttons */
-    margin-top: 10px; /* Space above the buttons */
-    margin-bottom: 0; /* Remove extra space below the buttons */
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .link {
     display: inline-block;
-    width: 35px; /* Slightly larger width for buttons in the box */
-    height: 35px; /* Slightly larger height for buttons in the box */
+    width: 35px;
+    height: 35px;
 }
 
 .link img {
     width: 100%;
     height: 100%;
-    border-radius: 5px; /* Slight rounding of the corners */
+    border-radius: 5px;
     transition: transform 0.3s;
 }
 
 .link img:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-.controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px; /* Space between buttons */
-    margin-top: 15px; /* Space above the controls */
-}
-
-.controls button {
-    background-color: rgba(255, 0, 0, 0.8); /* Red background */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 15px; /* Padding for the buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition for hover */
-}
-
-.controls button:hover {
-    background-color: rgba(255, 0, 0, 1); /* Darker red on hover */
+    transform: scale(1.1);
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 12px; /* Increased gap between social buttons */
-    margin-top: 15px; /* Space above social links */
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .social-link {
     display: inline-block;
-    width: 30px; /* Width for social buttons */
-    height: 30px; /* Height for social buttons */
+    width: 30px;
+    height: 30px;
 }
 
 .social-link img {
@@ -130,44 +109,49 @@ p {
 
 #customCursor {
     position: fixed;
-    width: 25px; /* Increased size for visibility */
-    height: 25px; /* Increased size for visibility */
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.8);
     pointer-events: none;
     transition: transform 0.1s ease;
-    z-index: 20; /* Make sure the cursor is on top */
+    z-index: 20;
 }
 
 .fade-out {
     opacity: 0;
-    transition: opacity 0.5s ease; /* Duration and timing */
+    transition: opacity 0.5s ease;
 }
 
 .footer {
     position: fixed;
-    bottom: 0; /* Position it at the bottom */
+    bottom: 0;
     left: 0;
-    width: 100%; /* Full width */
-    background: #444; /* Darker grey background */
-    color: white; /* Text color */
-    font-size: 0.8em; /* Smaller font size */
-    z-index: 10; /* Ensure it is above the canvas */
-    text-align: center; /* Center the text */
-    padding: 5px 0; /* Reduced padding for a smaller size */
+    width: 100%;
+    background: #444;
+    color: white;
+    font-size: 0.8em;
+    z-index: 10;
+    text-align: center;
+    padding: 5px 0;
 }
 
-#audioModal {
+/* Modal styles */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* Hidden by default */
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
+    z-index: 100; /* Above everything else */
+}
+
+.modal p {
     font-size: 1.5em;
-    z-index: 30; /* Ensure it's above everything */
+    text-align: center;
 }
