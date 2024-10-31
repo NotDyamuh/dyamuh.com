@@ -61,15 +61,8 @@ document.getElementById('middleButton').addEventListener('click', function(event
     }, 500); // Match the CSS transition duration
 });
 
-// Play audio
+// Attempt to play audio
 const audio = document.getElementById('backgroundAudio');
-
-// Play audio only after user interaction if necessary
-document.addEventListener('click', () => {
-    audio.play().catch(error => {
-        console.error('Audio playback failed:', error);
-    });
-});
 
 // Play audio on load
 window.addEventListener('load', () => {
