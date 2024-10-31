@@ -61,12 +61,20 @@ document.getElementById('middleButton').addEventListener('click', function(event
     }, 500); // Match the CSS transition duration
 });
 
-// Attempt to play audio
+// Handle audio playback
 const audio = document.getElementById('backgroundAudio');
+const audioModal = document.getElementById('audioModal');
+const playAudioButton = document.getElementById('playAudioButton');
 
-// Play audio on load
-window.addEventListener('load', () => {
-    audio.play().catch(error => {
+playAudioButton.addEventListener('click', () => {
+    audio.play().then(() => {
+        audioModal.style.display = 'none'; // Hide modal if audio starts
+    }).catch(error => {
         console.error('Audio playback failed:', error);
     });
+});
+
+// Show the modal on page load
+window.addEventListener('load', () => {
+    audioModal.style.display = 'flex'; // Show modal
 });
