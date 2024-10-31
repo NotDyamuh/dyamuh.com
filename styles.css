@@ -30,6 +30,56 @@ canvas {
     z-index: 10; /* Ensure content is above the background */
 }
 
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(50, 50, 50, 0.9); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* Padding around the bar */
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    z-index: 15; /* Above the canvas but below the content */
+    width: 100%; /* Full width */
+}
+
+.album-cover {
+    width: 50px; /* Album cover size */
+    height: 50px; /* Album cover size */
+    border-radius: 5px; /* Slight rounding of corners */
+    margin-right: 15px; /* Space between cover and text */
+}
+
+.song-info {
+    flex-grow: 1; /* Allow text to take available space */
+}
+
+.song-title {
+    font-size: 1.2em; /* Title size */
+    margin-bottom: 5px; /* Space below title */
+}
+
+.artist-name {
+    font-size: 1em; /* Artist name size */
+    color: #ccc; /* Slightly lighter color */
+}
+
+.pause-button {
+    background: rgba(255, 0, 0, 0.8); /* Red background */
+    border: none; /* Remove default button styles */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background 0.3s; /* Smooth background change */
+}
+
+.pause-button:hover {
+    background: rgba(255, 0, 0, 1); /* Darker red on hover */
+}
+
 .box {
     background: rgba(50, 50, 50, 0.9); /* Darker grey background */
     width: 360px; /* Increased width for button images */
