@@ -60,17 +60,3 @@ document.getElementById('middleButton').addEventListener('click', function(event
         window.location.href = targetUrl; // Redirect
     }, 500); // Match the CSS transition duration
 });
-
-// Audio control
-const pauseButton = document.querySelector('.pause-button');
-const audio = document.getElementById('backgroundAudio');
-
-pauseButton.addEventListener('click', () => {
-    if (audio.paused) {
-        audio.play(); // Play the audio
-        pauseButton.textContent = '||'; // Change button to pause icon
-    } else {
-        audio.pause(); // Pause the audio
-        pauseButton.textContent = '▶'; // Change button to play icon
-    }
-});
