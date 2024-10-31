@@ -47,6 +47,23 @@ window.addEventListener('resize', () => {
     rainCanvas.height = window.innerHeight;
 });
 
+// Handle audio playback
+const audioModal = document.getElementById('audioModal');
+
+audioModal.addEventListener('click', () => {
+    const audio = document.getElementById('backgroundAudio');
+    audio.play().then(() => {
+        audioModal.style.display = 'none'; // Hide modal if audio starts
+    }).catch(error => {
+        console.error('Audio playback failed:', error);
+    });
+});
+
+// Show the modal on page load
+window.addEventListener('load', () => {
+    audioModal.style.display = 'flex'; // Show modal
+});
+
 // Redirect with fade-out effect
 document.getElementById('middleButton').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent the default action of the anchor
@@ -59,22 +76,4 @@ document.getElementById('middleButton').addEventListener('click', function(event
     setTimeout(() => {
         window.location.href = targetUrl; // Redirect
     }, 500); // Match the CSS transition duration
-});
-
-// Handle audio playback
-const audio = document.getElementById('backgroundAudio');
-const audioModal = document.getElementById('audioModal');
-const playAudioButton = document.getElementById('playAudioButton');
-
-playAudioButton.addEventListener('click', () => {
-    audio.play().then(() => {
-        audioModal.style.display = 'none'; // Hide modal if audio starts
-    }).catch(error => {
-        console.error('Audio playback failed:', error);
-    });
-});
-
-// Show the modal on page load
-window.addEventListener('load', () => {
-    audioModal.style.display = 'flex'; // Show modal
 });
