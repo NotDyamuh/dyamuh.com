@@ -53,8 +53,8 @@ const audio = document.getElementById('backgroundAudio');
 const playPauseButton = document.getElementById('playPause');
 
 const tracks = [
-    "track1.mp3", // Add your audio file paths here
-    "track2.mp3",
+    "watch_the_party_die.mp3", // Add your audio file paths here
+    "Moonlight.mp3",
     "track3.mp3"
 ];
 let currentTrackIndex = 0;
