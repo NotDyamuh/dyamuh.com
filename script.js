@@ -47,70 +47,72 @@ window.addEventListener('resize', () => {
     rainCanvas.height = window.innerHeight;
 });
 
-// Handle audio playback
+// Audio management
 const audioModal = document.getElementById('audioModal');
 const audio = document.getElementById('backgroundAudio');
-const playPauseButton = document.getElementById('playPause');
-let isPlaying = false;
+const trackName = document.getElementById('trackName');
+const trackArtist = document.getElementById('trackArtist');
+const trackDuration = document.getElementById('trackDuration');
+const albumCover = document.getElementById('albumCover');
 
 const tracks = [
-    { title: "Watch the Party Die", artist: "Kendrick Lamar", albumCover: "watchthepartydie.jpg", file: "watch_the_party_die.mp3", duration: "5:06" },
-    { title: "Moonlight", artist: "XXXTentacion", albumCover: "moonlight.jpg", file: "Moonlight.mp3", duration: "2:15" },
-    { title: "Song Title 3", artist: "Artist 3", albumCover: "cover3.jpg", file: "track3.mp3", duration: "2:50" }
+    { name: "Watch the Party Die", artist: "Kendrick Lamar", albumCover: "watchthepartydie.jpg", duration: 506, file: "watch_the_party_die.mp3" },
+    { name: "Moonlight", artist: "XXXTentacion", albumCover: "Moonlight.jpg", duration: 215, file: "Moonlight.mp3" }
 ];
+
 let currentTrackIndex = 0;
 
-// Load the first track
 function loadTrack(index) {
-    audio.src = tracks[index].file;
-    document.getElementById('trackName').textContent = tracks[index].title;
-    document.getElementById('trackArtist').textContent = tracks[index].artist;
-    document.getElementById('albumCover').src = tracks[index].albumCover; // Set album cover image
-    document.getElementById('trackDuration').textContent = `0:00 / ${tracks[index].duration}`; // Set track duration
+    const track = tracks[index];
+    audio.src = track.file;
+    trackName.textContent = track.name;
+    trackArtist.textContent = track.artist;
+    albumCover.src = track.albumCover;
+    trackDuration.textContent = `0:00 / ${Math.floor(track.duration / 60)}:${String(track.duration % 60).padStart(2, '0')}`;
 }
 
-// Call this to load the first track at start
-loadTrack(currentTrackIndex);
+function updateDuration() {
+    const currentTime = Math.floor(audio.currentTime);
+    trackDuration.textContent = `${Math.floor(currentTime / 60)}:${String(currentTime % 60).padStart(2, '0')} / ${Math.floor(tracks[currentTrackIndex].duration / 60)}:${String(tracks[currentTrackIndex].duration % 60).padStart(2, '0')}`;
+}
 
-// Play/Pause functionality
-playPauseButton.addEventListener('click', () => {
-    if (isPlaying) {
-        audio.pause();
-        playPauseButton.textContent = '▶️'; // Change to play icon
-    } else {
-        audio.play();
-        playPauseButton.textContent = '⏸️'; // Change to pause icon
-    }
-    isPlaying = !isPlaying;
-});
-
-// Function to play the previous track
-document.getElementById('prevTrack').addEventListener('click', (event) => {
-    event.preventDefault();
-    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-    loadTrack(currentTrackIndex);
-    audio.play();
-    isPlaying = true;
-    playPauseButton.textContent = '⏸️'; // Update to pause icon
-});
-
-// Function to play the next track
-document.getElementById('nextTrack').addEventListener('click', (event) => {
-    event.preventDefault();
-    currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-    loadTrack(currentTrackIndex);
-    audio.play();
-    isPlaying = true;
-    playPauseButton.textContent = '⏸️'; // Update to pause icon
-});
-
-// Handle audio modal
+// Handle audio playback
 audioModal.addEventListener('click', () => {
+    loadTrack(currentTrackIndex);
     audio.play().then(() => {
         audioModal.style.display = 'none'; // Hide modal if audio starts
     }).catch(error => {
         console.error('Audio playback failed:', error);
     });
+});
+
+// Update duration periodically
+audio.addEventListener('timeupdate', updateDuration);
+
+// Play/Pause functionality
+const playPauseButton = document.getElementById('playPause');
+playPauseButton.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseButton.textContent = '⏸️'; // Change to pause icon
+    } else {
+        audio.pause();
+        playPauseButton.textContent = '▶️'; // Change to play icon
+    }
+});
+
+// Skip track
+document.getElementById('nextTrack').addEventListener('click', () => {
+    currentTrackIndex = (currentTrackIndex + 1) % tracks.length; // Loop back to first track
+    loadTrack(currentTrackIndex);
+    audio.play();
+});
+
+// Previous track
+document.getElementById('prevTrack').addEventListener('click', () => {
+    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length; // Loop to last track
+    loadTrack(currentTrackIndex);
+    audio.play();
 });
 
 // Show the modal on page load
