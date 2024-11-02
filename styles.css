@@ -155,3 +155,49 @@ p {
     font-size: 1.5em;
     text-align: center;
 }
+
+/* Audio controls styles */
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background: rgba(50, 50, 50, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.track-info {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.track-info p {
+    margin: 2px 0;
+    color: white; /* Adjust color for text */
+}
+
+.album-cover {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 2em; /* Adjust size for emoji */
+}
+
+.control-link {
+    text-decoration: none;
+    color: white; /* Color for emojis */
+    transition: transform 0.3s;
+}
+
+.control-link:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
