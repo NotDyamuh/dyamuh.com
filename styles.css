@@ -33,61 +33,47 @@ canvas {
 .box {
     background: rgba(50, 50, 50, 0.9);
     width: 360px;
-    height: auto;
+    height: 340px;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     text-align: center;
     overflow: hidden;
-    margin-bottom: 20px; /* Space below profile box */
 }
 
-.profile-pic {
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.profile-pic img {
-    width: 100px;
+.music-box {
+    background: rgba(50, 50, 50, 0.8);
+    width: 360px;
     height: 100px;
-    border-radius: 50%;
-    border: 5px solid rgba(255, 0, 0, 0.6);
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-}
-
-h1 {
-    font-size: 2em;
-    margin: 15px 0;
-}
-
-p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-.links {
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-    margin-bottom: 0;
+    align-items: center;
+    margin-top: 20px; /* Space between the boxes */
 }
 
-.link {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-}
-
-.link img {
-    width: 100%;
-    height: 100%;
+.album-cover {
+    width: 60px; /* Adjust album cover size */
+    height: 60px;
     border-radius: 5px;
-    transition: transform 0.3s;
+    margin-bottom: 10px;
 }
 
-.link img:hover {
-    transform: scale(1.1);
+.music-info {
+    margin-bottom: 5px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px; /* Space between control icons */
+}
+
+/* Control icon sizes */
+.control-link {
+    font-size: 1.5em; /* Adjust icon size */
 }
 
 .social-links {
@@ -155,47 +141,4 @@ p {
 .modal p {
     font-size: 1.5em;
     text-align: center;
-}
-
-/* Audio Controls Styles */
-.audio-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(70, 70, 70, 0.9);
-    padding: 10px;
-    border-radius: 10px;
-    width: 400px; /* Wider box */
-    position: relative; /* For centering */
-    margin: 0 auto; /* Center horizontally */
-}
-
-.album-cover {
-    width: 80px; /* Fixed width for album cover */
-    height: 80px; /* Fixed height for album cover */
-    border-radius: 8px; /* Rounded corners */
-    margin-bottom: 10px; /* Spacing below album cover */
-}
-
-.track-info {
-    text-align: center;
-    margin-bottom: 10px; /* Spacing below track info */
-}
-
-.controls {
-    display: flex;
-    justify-content: space-around;
-    width: 100%; /* Full width for controls */
-}
-
-.control-link {
-    color: white; /* Adjust color for controls */
-    text-decoration: none; /* Remove underline */
-    font-size: 1.5em; /* Adjust icon size */
-}
-
-/* Control icon sizes */
-.control-link {
-    width: 40px; /* Size for control icons */
-    height: 40px; /* Size for control icons */
 }
