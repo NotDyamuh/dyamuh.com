@@ -54,9 +54,9 @@ const playPauseButton = document.getElementById('playPause');
 let isPlaying = false;
 
 const tracks = [
-    { title: "Watch the Party Die", artist: "Kendrick Lamar", albumCover: "cover1.jpg", file: "watch_the_party_die.mp3" },
-    { title: "Moonlight", artist: "XXXTentacion", albumCover: "cover2.jpg", file: "Moonlight.mp3" },
-    { title: "Song Title 3", artist: "Artist 3", albumCover: "cover3.jpg", file: "track3.mp3" }
+    { title: "Watch the Party Die", artist: "Kendrick Lamar", albumCover: "watchthepartydie.jpg", file: "watch_the_party_die.mp3", duration: "5:06" },
+    { title: "Moonlight", artist: "XXXTentacion", albumCover: "moonlight.jpg", file: "Moonlight.mp3", duration: "2:15" },
+    { title: "Song Title 3", artist: "Artist 3", albumCover: "cover3.jpg", file: "track3.mp3", duration: "2:50" }
 ];
 let currentTrackIndex = 0;
 
@@ -66,6 +66,7 @@ function loadTrack(index) {
     document.getElementById('trackName').textContent = tracks[index].title;
     document.getElementById('trackArtist').textContent = tracks[index].artist;
     document.getElementById('albumCover').src = tracks[index].albumCover; // Set album cover image
+    document.getElementById('trackDuration').textContent = `0:00 / ${tracks[index].duration}`; // Set track duration
 }
 
 // Call this to load the first track at start
