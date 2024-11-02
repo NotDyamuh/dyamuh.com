@@ -15,7 +15,7 @@
                 <img src="https://avatars.githubusercontent.com/u/81250612?v=4" alt="Profile Picture" />
             </div>
             <h1>NotDyamuh</h1>
-            <p>lazy web developer interested in chromebook jailbreaks and networking.</p>
+            <p>Lazy web developer interested in Chromebook jailbreaks and networking.</p>
             <div class="links">
                 <a href="https://blog.dyamuh.com/" class="link">
                     <img src="https://darkn.bio/img/blog_icon.webp"/>
@@ -42,7 +42,14 @@
                 <img src="https://yt3.googleusercontent.com/Ws_BpAWD46mOjCW3XCnsZ0YmghW-6fhMf6d9pvCvb4g8JJftgvL54039U1mgh31OchR4ApMTezc=s900-c-k-c0x00ffffff-no-rj" alt="Discord" />
             </a>
         </div>
-        <div class="audio-controls">
+    </div>
+    <div class="audio-controls">
+        <div class="track-info">
+            <img id="albumCover" src="" alt="Album Cover" class="album-cover" />
+            <p id="trackName">Song Title</p>
+            <p id="trackArtist">Artist Name</p>
+        </div>
+        <div class="controls">
             <a href="#" id="prevTrack" class="control-link" title="Previous Track">⏮️</a>
             <a href="#" id="playPause" class="control-link" title="Play/Pause">▶️</a>
             <a href="#" id="nextTrack" class="control-link" title="Next Track">⏭️</a>
@@ -50,7 +57,7 @@
     </div>
     <div id="customCursor"></div>
 
-    <audio id="backgroundAudio" preload="auto" loop></audio>
+    <audio id="backgroundAudio" src="watch_the_party_die.mp3" preload="auto" loop></audio>
     
     <div class="modal" id="audioModal">
         <p>Click Anywhere</p>
