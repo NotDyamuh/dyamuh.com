@@ -51,68 +51,60 @@ window.addEventListener('resize', () => {
 const audioModal = document.getElementById('audioModal');
 const audio = document.getElementById('backgroundAudio');
 const playPauseButton = document.getElementById('playPause');
-
-const tracks = [
-    "watch_the_party_die.mp3", // Add your audio file paths here
-    "Moonlight.mp3",
-    "track3.mp3"
-];
-let currentTrackIndex = 0;
 let isPlaying = false;
 
-// Load the first track
-audio.src = tracks[currentTrackIndex];
+const tracks = [
+    { title: "Watch the Party Die", artist: "Kendrick Lamar", albumCover: "cover1.jpg", file: "watch_the_party_die.mp3" },
+    { title: "Moonlight", artist: "XXXTentacion", albumCover: "cover2.jpg", file: "Moonlight.mp3" },
+    { title: "Song Title 3", artist: "Artist 3", albumCover: "cover3.jpg", file: "track3.mp3" }
+];
+let currentTrackIndex = 0;
 
-// Function to play or pause the audio
-function togglePlayPause() {
-    if (isPlaying) {
-        audio.pause();
-        playPauseButton.textContent = '▶️'; // Update to play icon
-    } else {
-        audio.play();
-        playPauseButton.textContent = '⏸️'; // Update to pause icon
-    }
-    isPlaying = !isPlaying;
+// Load the first track
+function loadTrack(index) {
+    audio.src = tracks[index].file;
+    document.getElementById('trackName').textContent = tracks[index].title;
+    document.getElementById('trackArtist').textContent = tracks[index].artist;
+    document.getElementById('albumCover').src = tracks[index].albumCover; // Set album cover image
 }
 
-// Event listener for play/pause button
-playPauseButton.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-    togglePlayPause();
+// Call this to load the first track at start
+loadTrack(currentTrackIndex);
+
+// Play/Pause functionality
+playPauseButton.addEventListener('click', () => {
+    if (isPlaying) {
+        audio.pause();
+        playPauseButton.textContent = '▶️'; // Change to play icon
+    } else {
+        audio.play();
+        playPauseButton.textContent = '⏸️'; // Change to pause icon
+    }
+    isPlaying = !isPlaying;
 });
 
 // Function to play the previous track
-function playPrevTrack() {
+document.getElementById('prevTrack').addEventListener('click', (event) => {
+    event.preventDefault();
     currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
-    audio.src = tracks[currentTrackIndex];
+    loadTrack(currentTrackIndex);
     audio.play();
     isPlaying = true;
     playPauseButton.textContent = '⏸️'; // Update to pause icon
-}
+});
 
 // Function to play the next track
-function playNextTrack() {
+document.getElementById('nextTrack').addEventListener('click', (event) => {
+    event.preventDefault();
     currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
-    audio.src = tracks[currentTrackIndex];
+    loadTrack(currentTrackIndex);
     audio.play();
     isPlaying = true;
     playPauseButton.textContent = '⏸️'; // Update to pause icon
-}
-
-// Event listeners for previous and next track buttons
-document.getElementById('prevTrack').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-    playPrevTrack();
 });
 
-document.getElementById('nextTrack').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-    playNextTrack();
-});
-
-// Handle audio modal display
+// Handle audio modal
 audioModal.addEventListener('click', () => {
-    const audio = document.getElementById('backgroundAudio');
     audio.play().then(() => {
         audioModal.style.display = 'none'; // Hide modal if audio starts
     }).catch(error => {
