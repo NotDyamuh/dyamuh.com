@@ -158,14 +158,16 @@ p {
 
 /* Audio controls styles */
 .audio-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 60px; /* Position above the footer */
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(50, 50, 50, 0.9);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    text-align: center;
+    z-index: 10;
 }
 
 .track-info {
@@ -194,10 +196,10 @@ p {
 
 .control-link {
     text-decoration: none;
-    color: white; /* Color for emojis */
+    color: white; /* Adjust color for controls */
     transition: transform 0.3s;
 }
 
 .control-link:hover {
-    transform: scale(1.2); /* Slightly enlarge on hover */
+    transform: scale(1.1); /* Enlarge on hover */
 }
