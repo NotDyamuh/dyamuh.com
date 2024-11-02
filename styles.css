@@ -39,6 +39,7 @@ canvas {
     box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     text-align: center;
     overflow: hidden;
+    margin-bottom: 20px; /* Space below profile box */
 }
 
 .profile-pic {
@@ -69,6 +70,7 @@ p {
     justify-content: center;
     gap: 8px;
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .link {
@@ -161,16 +163,16 @@ p {
     flex-direction: column;
     align-items: center;
     background: rgba(70, 70, 70, 0.9);
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
-    margin: 20px auto; /* Center the box */
-    width: 300px; /* Set a fixed width */
+    width: 400px; /* Wider box */
     position: relative; /* For centering */
+    margin: 0 auto; /* Center horizontally */
 }
 
 .album-cover {
-    width: 100px; /* Fixed width for album cover */
-    height: 100px; /* Fixed height for album cover */
+    width: 80px; /* Fixed width for album cover */
+    height: 80px; /* Fixed height for album cover */
     border-radius: 8px; /* Rounded corners */
     margin-bottom: 10px; /* Spacing below album cover */
 }
@@ -182,12 +184,18 @@ p {
 
 .controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%; /* Full width for controls */
 }
 
 .control-link {
     color: white; /* Adjust color for controls */
-    text-decoration: none;
-    font-size: 1.5em; /* Size for control icons */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5em; /* Adjust icon size */
+}
+
+/* Control icon sizes */
+.control-link {
+    width: 40px; /* Size for control icons */
+    height: 40px; /* Size for control icons */
 }
