@@ -49,7 +49,68 @@ window.addEventListener('resize', () => {
 
 // Handle audio playback
 const audioModal = document.getElementById('audioModal');
+const audio = document.getElementById('backgroundAudio');
+const playPauseButton = document.getElementById('playPause');
 
+const tracks = [
+    "track1.mp3", // Add your audio file paths here
+    "track2.mp3",
+    "track3.mp3"
+];
+let currentTrackIndex = 0;
+let isPlaying = false;
+
+// Load the first track
+audio.src = tracks[currentTrackIndex];
+
+// Function to play or pause the audio
+function togglePlayPause() {
+    if (isPlaying) {
+        audio.pause();
+        playPauseButton.textContent = '▶️'; // Update to play icon
+    } else {
+        audio.play();
+        playPauseButton.textContent = '⏸️'; // Update to pause icon
+    }
+    isPlaying = !isPlaying;
+}
+
+// Event listener for play/pause button
+playPauseButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    togglePlayPause();
+});
+
+// Function to play the previous track
+function playPrevTrack() {
+    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+    audio.src = tracks[currentTrackIndex];
+    audio.play();
+    isPlaying = true;
+    playPauseButton.textContent = '⏸️'; // Update to pause icon
+}
+
+// Function to play the next track
+function playNextTrack() {
+    currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+    audio.src = tracks[currentTrackIndex];
+    audio.play();
+    isPlaying = true;
+    playPauseButton.textContent = '⏸️'; // Update to pause icon
+}
+
+// Event listeners for previous and next track buttons
+document.getElementById('prevTrack').addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    playPrevTrack();
+});
+
+document.getElementById('nextTrack').addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+    playNextTrack();
+});
+
+// Handle audio modal display
 audioModal.addEventListener('click', () => {
     const audio = document.getElementById('backgroundAudio');
     audio.play().then(() => {
