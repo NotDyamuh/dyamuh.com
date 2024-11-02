@@ -159,15 +159,16 @@ p {
 /* Audio controls styles */
 .audio-controls {
     position: fixed;
-    bottom: 60px; /* Position above the footer */
+    bottom: 70px; /* Position above the footer */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(50, 50, 50, 0.9);
-    padding: 15px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
     text-align: center;
     z-index: 10;
+    width: 300px; /* Adjusted width */
 }
 
 .track-info {
@@ -181,8 +182,8 @@ p {
 }
 
 .album-cover {
-    width: 100px; /* Adjust size as needed */
-    height: 100px;
+    width: 80px; /* Adjust size as needed */
+    height: 80px;
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -191,12 +192,12 @@ p {
     display: flex;
     justify-content: center;
     gap: 20px;
-    font-size: 2em; /* Adjust size for emoji */
+    font-size: 1.5em; /* Larger size for controls */
 }
 
 .control-link {
-    text-decoration: none;
     color: white; /* Adjust color for controls */
+    text-decoration: none;
     transition: transform 0.3s;
 }
 
