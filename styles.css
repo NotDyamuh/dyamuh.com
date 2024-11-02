@@ -28,6 +28,8 @@ canvas {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
+    display: flex; /* Flexbox for layout */
+    justify-content: center;
 }
 
 .box {
@@ -37,6 +39,7 @@ canvas {
     border-radius: 12px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 1);
     text-align: center;
+    margin-right: 20px; /* Space for music box */
 }
 
 .profile-pic {
@@ -105,8 +108,8 @@ p {
 
 .music-box {
     background: rgba(50, 50, 50, 0.8);
-    width: 360px;
-    height: 100px;
+    width: 100px; /* Square width */
+    height: 100px; /* Square height */
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 1);
@@ -114,23 +117,23 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px; /* Space below social links */
 }
 
 .album-cover {
     width: 60px; /* Adjust album cover size */
     height: 60px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Spacing below album cover */
 }
 
 .music-info {
     margin-bottom: 5px;
+    text-align: center; /* Center text */
 }
 
 .controls {
     display: flex;
-    gap: 10px; /* Space between control icons */
+    gap: 5px; /* Space between control icons */
 }
 
 /* Control icon sizes */
