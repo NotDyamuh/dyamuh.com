@@ -33,7 +33,7 @@ canvas {
 .box {
     background: rgba(50, 50, 50, 0.9);
     width: 360px;
-    height: 340px;
+    height: auto;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 30px rgba(255, 0, 0, 1);
@@ -69,7 +69,6 @@ p {
     justify-content: center;
     gap: 8px;
     margin-top: 10px;
-    margin-bottom: 0;
 }
 
 .link {
@@ -156,51 +155,39 @@ p {
     text-align: center;
 }
 
-/* Audio controls styles */
+/* Audio Controls Styles */
 .audio-controls {
-    position: fixed;
-    bottom: 70px; /* Position above the footer */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(50, 50, 50, 0.9);
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
-    text-align: center;
-    z-index: 10;
-    width: 300px; /* Adjusted width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(70, 70, 70, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px auto; /* Center the box */
+    width: 300px; /* Set a fixed width */
+    position: relative; /* For centering */
+}
+
+.album-cover {
+    width: 100px; /* Fixed width for album cover */
+    height: 100px; /* Fixed height for album cover */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Spacing below album cover */
 }
 
 .track-info {
     text-align: center;
-    margin-bottom: 10px;
-}
-
-.track-info p {
-    margin: 2px 0;
-    color: white; /* Adjust color for text */
-}
-
-.album-cover {
-    width: 80px; /* Adjust size as needed */
-    height: 80px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Spacing below track info */
 }
 
 .controls {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    font-size: 1.5em; /* Larger size for controls */
+    justify-content: space-between;
+    width: 100%; /* Full width for controls */
 }
 
 .control-link {
     color: white; /* Adjust color for controls */
     text-decoration: none;
-    transition: transform 0.3s;
-}
-
-.control-link:hover {
-    transform: scale(1.1); /* Enlarge on hover */
+    font-size: 1.5em; /* Size for control icons */
 }
