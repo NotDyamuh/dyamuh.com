@@ -15,7 +15,7 @@
                 <img src="https://avatars.githubusercontent.com/u/81250612?v=4" alt="Profile Picture" />
             </div>
             <h1>NotDyamuh</h1>
-            <p>Lazy web developer interested in Chromebook jailbreaks and networking.</p>
+            <p>lazy web developer interested in chromebook jailbreaks and networking.</p>
             <div class="links">
                 <a href="https://blog.dyamuh.com/" class="link">
                     <img src="https://darkn.bio/img/blog_icon.webp"/>
@@ -34,14 +34,14 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Audio Controls Box -->
-        <div class="audio-controls">
-            <img id="albumCover" src="watchthepartydie.jpg" alt="Album Cover" class="album-cover" />
-            <div class="track-info">
-                <p id="trackName">Watch the Party Die</p>
-                <p id="trackArtist">Kendrick Lamar</p>
-                <p id="trackDuration">0:00 / 3:45</p>
+
+        <!-- Music Control Box -->
+        <div class="music-box" id="musicBox">
+            <img id="albumCover" src="" alt="Album Cover" class="album-cover"/>
+            <div class="music-info">
+                <div id="trackName">Track Name</div>
+                <div id="trackArtist">Artist Name</div>
+                <div id="trackDuration">0:00 / 0:00</div>
             </div>
             <div class="controls">
                 <a href="#" id="prevTrack" class="control-link">⏮️</a>
@@ -49,7 +49,7 @@
                 <a href="#" id="nextTrack" class="control-link">⏭️</a>
             </div>
         </div>
-        
+
         <div class="social-links">
             <a href="https://github.com/NotDyamuh" class="social-link">
                 <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub" />
@@ -59,9 +59,10 @@
             </a>
         </div>
     </div>
+
     <div id="customCursor"></div>
 
-    <audio id="backgroundAudio" preload="auto" loop></audio>
+    <audio id="backgroundAudio" src="watch_the_party_die.mp3" preload="auto" loop></audio>
     
     <div class="modal" id="audioModal">
         <p>Click Anywhere</p>
@@ -70,7 +71,7 @@
     <script src="script.js"></script>
     
     <footer class="footer">
-      <p>Made with love and lots of pain by dyamuh ❤️</p>
+        <p>Made with love and lots of pain by dyamuh ❤️</p>
     </footer>
 </body>
 </html>
