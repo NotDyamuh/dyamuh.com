@@ -11,7 +11,7 @@ for (let i = 0; i < 100; i++) {
         x: Math.random() * rainCanvas.width,
         y: Math.random() * rainCanvas.height,
         length: Math.random() * 20 + 10,
-        speed: Math.random() * 2 + 1 // Slower speed
+        speed: Math.random() * 2 + 1
     });
 }
 
@@ -24,56 +24,119 @@ function drawRain() {
         ctx.moveTo(drop.x, drop.y);
         ctx.lineTo(drop.x, drop.y + drop.length);
         ctx.stroke();
-        drop.y += drop.speed; // Move raindrop down
-        // Reset raindrop to the top once it falls off the screen
+        drop.y += drop.speed;
         if (drop.y > rainCanvas.height) {
-            drop.y = -drop.length; // Reset to just above the top
-            drop.x = Math.random() * rainCanvas.width; // Random horizontal position
+            drop.y = -drop.length;
+            drop.x = Math.random() * rainCanvas.width;
         }
     }
 }
 
-// Draw rain at a slower interval
-setInterval(drawRain, 33); // About 30 frames per second
+setInterval(drawRain, 33);
 
-// Custom cursor movement
 document.addEventListener('mousemove', (e) => {
-    customCursor.style.transform = `translate(${e.clientX - 12.5}px, ${e.clientY - 12.5}px)`; // Center the cursor
+    customCursor.style.transform = `translate(${e.clientX - 12.5}px, ${e.clientY - 12.5}px)`;
 });
 
-// Resize canvas on window resize
 window.addEventListener('resize', () => {
     rainCanvas.width = window.innerWidth;
     rainCanvas.height = window.innerHeight;
 });
 
-// Handle audio playback
+const audio = document.getElementById('backgroundAudio');
+const playButton = document.getElementById('playButton');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const songTitle = document.getElementById('songTitle');
+const artist = document.getElementById('artist');
+const volumeSlider = document.getElementById('volumeSlider');
 const audioModal = document.getElementById('audioModal');
 
-audioModal.addEventListener('click', () => {
-    const audio = document.getElementById('backgroundAudio');
+let isPlaying = true;
+
+const playlist = [
+    { title: "Watch The Party Die", artist: "Kendrick Lamar", src: "watch_the_party_die.mp3" },
+    { title: "First Day Out", artist: "Tee Grizzley", src: "fdo.mp3" },
+    { title: "Song 3", artist: "Artist 3", src: "song3.mp3" },
+];
+
+let currentSongIndex = 0;
+
+function playSong(index) {
+    if (index < 0) index = playlist.length - 1;
+    if (index >= playlist.length) index = 0;
+
+    const song = playlist[index];
+    audio.src = song.src;
+    audio.load();
     audio.play().then(() => {
-        audioModal.style.display = 'none'; // Hide modal if audio starts
+        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
+        updateSongInfo(song.title, song.artist);
+        currentSongIndex = index;
+    }).catch(error => {
+        console.error("Error playing song:", error);
+        isPlaying = false;
+        playButton.innerHTML = '<i class="fas fa-play"></i>';
+    });
+}
+
+playButton.addEventListener('click', () => {
+    if (isPlaying) {
+        audio.pause();
+        playButton.innerHTML = '<i class="fas fa-play"></i>';
+    } else {
+        audio.play();
+        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+    }
+    isPlaying = !isPlaying;
+});
+
+prevButton.addEventListener('click', () => {
+    playSong(currentSongIndex - 1);
+});
+
+nextButton.addEventListener('click', () => {
+    playSong(currentSongIndex + 1);
+});
+
+function updateSongInfo(title, artistName) {
+    songTitle.textContent = title;
+    artist.textContent = artistName;
+}
+
+window.addEventListener('load', () => {
+    playSong(currentSongIndex);
+    if (!audio.paused) {
+        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+        playButton.innerHTML = '<i class="fas fa-play"></i>';
+        isPlaying = false;
+    }
+    audioModal.style.display = 'flex';
+});
+
+audioModal.addEventListener('click', () => {
+    audio.play().then(() => {
+        audioModal.style.display = 'none';
+        playButton.innerHTML = '<i class="fas fa-pause"></i>';
+        isPlaying = true;
     }).catch(error => {
         console.error('Audio playback failed:', error);
+        isPlaying = false;
+        playButton.innerHTML = '<i class="fas fa-play"></i>';
     });
 });
 
-// Show the modal on page load
-window.addEventListener('load', () => {
-    audioModal.style.display = 'flex'; // Show modal
+document.getElementById('middleButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    const targetUrl = this.href;
+    document.querySelector('.content').classList.add('fade-out');
+    setTimeout(() => {
+        window.location.href = targetUrl;
+    }, 500);
 });
 
-// Redirect with fade-out effect
-document.getElementById('middleButton').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default action of the anchor
-    const targetUrl = this.href; // Get the URL to redirect to
-
-    // Add the fade-out class to the content
-    document.querySelector('.content').classList.add('fade-out');
-
-    // Wait for the transition to complete before redirecting
-    setTimeout(() => {
-        window.location.href = targetUrl; // Redirect
-    }, 500); // Match the CSS transition duration
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
 });
