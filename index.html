@@ -6,6 +6,7 @@
     <title>dyamuh's website</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <canvas id="rainCanvas"></canvas>
@@ -39,25 +40,46 @@
                 <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub" />
             </a>
             <a href="https://instagram.com/humaydkhann/" class="social-link">
-                <img src="https://imgs.search.brave.com/gPZT1daGnqAjIB8yW5fG0cUuGqNhb3ZbYQqVY8Gy6S8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi85Lzk1L0lu/c3RhZ3JhbV9sb2dv/XzIwMjIuc3ZnLzIy/MHB4LUluc3RhZ3Jh/bV9sb2dvXzIwMjIu/c3ZnLnBuZw" alt="Instagram" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" />
             </a>
             <a href="https://discord.com/invisible_taewon" class="social-link">
-                <img src="https://yt3.googleusercontent.com/Ws_BpAWD46mOjCW3XCnsZ0YmghW-6fhMf6d9pvCvb4g8JJftgvL54039U1mgh31OchR4ApMTezc=s900-c-k-c0x00ffffff-no-rj" alt="Discord" />
+                <img src="https://static.vecteezy.com/system/resources/previews/023/986/880/non_2x/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.png" alt="Discord" />
             </a>
         </div>
     </div>
     <div id="customCursor"></div>
 
     <audio id="backgroundAudio" src="watch_the_party_die.mp3" preload="auto" loop></audio>
-    
+
     <div class="modal" id="audioModal">
         <p>Click Anywhere</p>
     </div>
 
-    <script src="script.js"></script>
-    
+    <div class="music-player">
+        <div class="controls">
+            <button id="prevButton" class="control-button"><i class="fas fa-backward"></i></button>
+            <button id="playButton" class="control-button"><i class="fas fa-play"></i></button>
+            <button id="nextButton" class="control-button"><i class="fas fa-forward"></i></button>
+        </div>
+        <div class="song-info">
+            <span id="songTitle">Watch The Party Die</span> <span id="artist">dyamuh</span>
+        </div>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <footer class="footer">
-      <p>Made with love and lots of pain by dyamuh ❤️</p>
+        <p>Made with love and lots of pain by dyamuh ❤️</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
