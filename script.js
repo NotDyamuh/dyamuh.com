@@ -55,9 +55,9 @@ const audioModal = document.getElementById('audioModal');
 let isPlaying = true;
 
 const playlist = [
-    { title: "Watch The Party Die", artist: "Kendrick Lamar", src: "watch_the_party_die.mp3" },
-    { title: "First Day Out", artist: "Tee Grizzley", src: "fdo.mp3" },
-    { title: "Song 3", artist: "Artist 3", src: "song3.mp3" },
+    { title: "As We Speak", artist: "by Yeat ft. Drake", src: "aws.mp3" },
+    { title: "Never Quit", artist: "by Yeat", src: "nq.mp3" },
+    // { title: "Song 3", artist: "Artist 3", src: "song3.mp3" },
 ];
 
 let currentSongIndex = 0;
