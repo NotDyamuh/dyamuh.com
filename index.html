@@ -34,7 +34,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -60%);
             text-align: center;
             z-index: 10;
             padding: 20px;
@@ -48,6 +48,8 @@
             backdrop-filter: blur(20px);
             box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
             transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideInUp 0.8s ease forwards;
         }
         .box:hover {
             transform: scale(1.03);
@@ -77,22 +79,37 @@
             margin-bottom: 10px;
         }
         .discord-status {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 90%);
+            width: 360px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: slideInUp 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+        .discord-status:hover {
+            transform: translate(-50%, 90%) scale(1.02);
+            box-shadow: 0 0 80px rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
         }
         .discord-status a {
-            transition: transform 0.3s ease;
             display: block;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease;
         }
         .discord-status a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
         }
         .discord-status img {
+            width: 100%;
+            height: auto;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -100,7 +117,7 @@
             display: flex;
             justify-content: center;
             gap: 14px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         .social-link {
             width: 32px;
@@ -214,6 +231,23 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-links {
+            opacity: 0;
+            animation: slideInUp 0.8s ease forwards;
+            animation-delay: 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -227,14 +261,6 @@
             </div>
             <h1>NotDyamuh</h1>
             <p>Full stack web developer + Owner @ Phantom Network</p>
-        </div>
-        
-        <div class="discord-status">
-            <a href="https://discord.com/users/785207024388407347">
-                <img src="https://lanyard.cnrad.dev/api/785207024388407347?theme=dark" alt="Discord Status" />
-            </a>
-        </div>
-        
         <div class="social-links">
             <a href="https://github.com/NotDyamuh" class="social-link">
                 <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png" alt="GitHub" />
@@ -249,6 +275,12 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/023/986/880/non_2x/discord-logo-discord-logo-transparent-discord-icon-transparent-free-free-png.png" alt="Discord" />
             </a>
         </div>
+    </div>
+    
+    <div class="discord-status">
+        <a href="https://discord.com/users/785207024388407347">
+            <img src="https://lanyard.cnrad.dev/api/785207024388407347?theme=dark" alt="Discord Status" />
+        </a>
     </div>
     <div id="customCursor"></div>
 
